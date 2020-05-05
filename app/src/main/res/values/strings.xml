@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Caribbean Covid-19 Meter</string>
+    <string name="welcome_greeting">Welcome</string>
+    <string name="welcome_message">Keep updated with the state of Covid-19 in the
+Caribbean.</string>
+    <string name="request_name_message">What\'s Your Name?</string>
+    <string name="request_name_placeholder">First name is fine</string>
+    <string name="theme_selector">Dark Mode</string>
+
+    <string name="default_name">Bonjour</string>
+    <string name="defaultDate">Today</string>
+    <string name="hello_text">Hello</string>
+
+    <string name="choose_island">Choose Your Island</string>
+</resources>
