@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
@@ -19,6 +20,7 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
 
 
     public IslandListAdapter(Context context, LinkedList<Island> islandList) {
+        this.context = context;
         mInflater = LayoutInflater.from(context);
         this.islandList = islandList;
     }
@@ -29,7 +31,7 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
         View mItemView =
                 mInflater.inflate(R.layout.island_list_item,
                         parent, false);
-        return new IslandViewHolder(context, mItemView, this);
+        return new IslandViewHolder(mItemView, this);
     }
 
     @Override
@@ -38,6 +40,18 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
             Island island = islandList.get(position);
             // Add the data to the view
             holder.name.setText(island.name);
+
+            holder.cardView.setOnClickListener(
+            new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent i = new Intent(context, IslandDetailActivity.class);
+                    // TODO::Pass data
+                    context.startActivity(i);
+                }
+            });
     }
 
     @Override
@@ -45,25 +59,19 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
         return islandList.size();
     }
 
-    public class IslandViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class IslandViewHolder extends RecyclerView.ViewHolder {
         private Context context;
         private TextView name;
+        private CardView cardView;
         private TextView population;
         private IslandListAdapter mAdapter;
-        public IslandViewHolder(Context context, View itemView, IslandListAdapter adapter) {
+        public IslandViewHolder(View itemView, IslandListAdapter adapter) {
             super(itemView);
             this.context = context;
+            cardView = itemView.findViewById(R.id.parent);
             name = itemView.findViewById(R.id.nameLabel);
             population = itemView.findViewById(R.id.populationLabel);
-            this.mAdapter = adapter;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-//            Intent messageIntent = new Intent(context, IslandDetailActivity.class);
-//            // TODO::Pass data
-//            context.startActivity(messageIntent);
+            population = itemView.findViewById(R.id.populationLabel);
         }
     }
 }
