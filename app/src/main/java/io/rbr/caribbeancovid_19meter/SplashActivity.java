@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import io.rbr.caribbeancovid_19meter.helpers.DataLoader;
+import io.rbr.caribbeancovid_19meter.helpers.IslandManager;
+
 public class SplashActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private String sharedPrefFile = "io.rbr.caribbeancovid_19.prefs";
@@ -14,23 +17,34 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         // Get Shared Prefs
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
-
-
         // For Testing
-//        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-//        preferencesEditor.clear();
-//        preferencesEditor.apply();
+        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+        preferencesEditor.clear();
+        preferencesEditor.apply();
 
-        redirection();
+
+        final IslandManager islandManager = new IslandManager();
+
+        DataLoader.init(this);
+        DataLoader.loadData(new Runnable() {
+            public void run() {
+                redirection();
+            }
+        });
+
+//        redirection();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        redirection();
+        DataLoader.loadData(new Runnable() {
+            public void run() {
+                redirection();
+            }
+        });
     }
 
     private void redirection() {
