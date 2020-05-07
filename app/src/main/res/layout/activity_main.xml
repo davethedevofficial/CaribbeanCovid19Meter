@@ -23,15 +23,15 @@
 
     <TextView
         android:id="@+id/nameLabel"
-        android:layout_width="380dp"
-        android:layout_height="114dp"
+        android:layout_width="336dp"
+        android:layout_height="102dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/request_name_message"
         android:textColor="@color/colorTitle"
-        android:textSize="48sp"
+        android:textSize="42sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
@@ -39,8 +39,8 @@
 
     <TextView
         android:id="@+id/dateLabel"
-        android:layout_width="380dp"
-        android:layout_height="62dp"
+        android:layout_width="295dp"
+        android:layout_height="46dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
@@ -54,8 +54,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImageView"
-        android:layout_width="209dp"
-        android:layout_height="210dp"
+        android:layout_width="171dp"
+        android:layout_height="178dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="44dp"
@@ -122,6 +122,7 @@
         android:text="@string/theme_selector"
         android:textColor="@color/colorTitle"
         android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditView"
         tools:checked="true" />

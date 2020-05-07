@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import io.rbr.caribbeancovid_19meter.helpers.DataLoader;
 import io.rbr.caribbeancovid_19meter.helpers.IslandManager;
 
 public class IslandSelectionActivity extends AppCompatActivity {
+    private static final int PICK_IMAGE = 1;
     private TextView nameLabel;
     private ImageView profileImageView;
     private TextView dateLabel;
@@ -74,5 +76,26 @@ public class IslandSelectionActivity extends AppCompatActivity {
                 islandListAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+
+    public void pickImage(View view) {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImageUri = data.getData();
+            profileImageView.setImageURI(selectedImageUri);
+
+            SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+            preferencesEditor.putString("imageUri", selectedImageUri.toString());
+            preferencesEditor.apply();
+        }
     }
 }
