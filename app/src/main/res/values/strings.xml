@@ -13,4 +13,11 @@ Caribbean.</string>
     <string name="hello_text">Hello</string>
 
     <string name="choose_island">Choose Your Island</string>
+    <string name="country_default">Country</string>
+    <string name="today_default">Today</string>
+    <string name="total_default2">Total</string>
+    <string name="cases">Cases</string>
+    <string name="total_cases_label">Total Cases</string>
+    <string name="increase_default">Increase</string>
+    <string name="no_rise_default">No rise</string>
 </resources>

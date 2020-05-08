@@ -44,7 +44,7 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
     @Override
     public void onBindViewHolder(@NonNull IslandListAdapter.IslandViewHolder holder, int position) {
             // Retrieve the data for that position
-            Island island = islandList.get(position);
+            final Island island = islandList.get(position);
             // Add the data to the view
             holder.nameLabel.setText(island.name);
             holder.populationLabel.setText("Population " + island.population);
@@ -66,6 +66,11 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
                 {
                     Intent i = new Intent(context, IslandDetailActivity.class);
                     // TODO::Pass data
+
+                    i.putExtra( "Value", island.name);
+                    i.putExtra("Controller",island.totalCases + "");
+                    i.putExtra( "Today", island.todayCases+"");
+                    i.putExtra( "Deaths", island.totalDeaths+"");
                     context.startActivity(i);
                 }
             });
