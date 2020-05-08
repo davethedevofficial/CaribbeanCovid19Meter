@@ -9,6 +9,7 @@ public class Island {
     public int totalCases;
     public int totalDeaths;
     public int todayCases;
+    public int yesterdayCases;
     public int todayDeaths;
 
     public Island(String name, int population) {

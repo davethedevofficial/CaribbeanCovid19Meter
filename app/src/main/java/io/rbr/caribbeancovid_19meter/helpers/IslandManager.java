@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 
 import io.rbr.caribbeancovid_19meter.models.Island;
@@ -74,6 +76,7 @@ public class IslandManager {
         int todayDeaths;
         String date;
         String todayDate = (String) android.text.format.DateFormat.format("dd/MM/yyyy", new java.util.Date());
+        String yesterdayDate = (String) android.text.format.DateFormat.format("dd/MM/yyyy", yesterday());
 
         try {
             geoId = record.getString("geoId");
@@ -97,6 +100,9 @@ public class IslandManager {
                     islands.get(i).todayCases = todayCases;
                     islands.get(i).todayDeaths = todayDeaths;
                 }
+                if (date.equals(yesterdayDate)) {
+                    islands.get(i).yesterdayCases = todayCases;
+                }
                 exist = true;
             };
         }
@@ -113,7 +119,16 @@ public class IslandManager {
             i.todayCases = todayCases;
             i.todayDeaths = todayDeaths;
         }
+        if (date.equals(yesterdayDate)) {
+            i.yesterdayCases = todayCases;
+        }
         islands.add(i);
+    }
+
+    private static Date yesterday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
     }
 
     private static class BulkAddDataTask extends AsyncTask<JSONArray, Integer, LinkedList<Island>> {
