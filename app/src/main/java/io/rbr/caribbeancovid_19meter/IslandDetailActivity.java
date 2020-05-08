@@ -21,6 +21,7 @@ public class IslandDetailActivity extends AppCompatActivity {
     private TextView todayCount;
     private TextView totalDeaths;
     private TextView yesterdayTotalCount;
+    private TextView yesterdayDeaths;
 
     private ImageView upTrend;
     private ImageView noTrend;
@@ -36,6 +37,9 @@ public class IslandDetailActivity extends AppCompatActivity {
           int myNum = 0;
           int yesterday = 0;
           int yesterdayTC = 0;
+          int todayDeaths = 0;
+          int yesterdayDC = 0;
+          int yesterdayD = 0;
         //Get Reference to Views
         nameLabel = (TextView) findViewById(R.id.nameLabel);
         profileImageView = (ImageView) findViewById(R.id.profileImageView);
@@ -45,6 +49,7 @@ public class IslandDetailActivity extends AppCompatActivity {
         todayCount= (TextView) findViewById(R.id.todayNewCases);
         totalDeaths= (TextView) findViewById(R.id.totalDeaths) ;
         yesterdayTotalCount = (TextView) findViewById(R.id.yesterdayCount);
+        yesterdayDeaths = (TextView)findViewById(R.id.yesterdayDeathLabel);
         upTrend= (ImageView) findViewById(R.id.upTrendImage) ;
         noTrend= (ImageView) findViewById(R.id.noTrendImage) ;
 
@@ -76,6 +81,7 @@ public class IslandDetailActivity extends AppCompatActivity {
         try {
              yesterday = Integer.parseInt(c);
              myNum = Integer.parseInt(t);
+
             noTrend.setVisibility(myNum == 0 ? View.VISIBLE : View.GONE);
             upTrend.setVisibility(myNum > 0 ? View.VISIBLE : View.GONE);
 
