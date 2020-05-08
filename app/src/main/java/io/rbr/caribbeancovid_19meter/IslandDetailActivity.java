@@ -20,6 +20,7 @@ public class IslandDetailActivity extends AppCompatActivity {
     private TextView totalCount;
     private TextView todayCount;
     private TextView totalDeaths;
+    private TextView yesterdayTotalCount;
 
     private ImageView upTrend;
     private ImageView noTrend;
@@ -33,6 +34,8 @@ public class IslandDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_island_detail);
 
           int myNum = 0;
+          int yesterday = 0;
+          int yesterdayTC = 0;
         //Get Reference to Views
         nameLabel = (TextView) findViewById(R.id.nameLabel);
         profileImageView = (ImageView) findViewById(R.id.profileImageView);
@@ -41,6 +44,7 @@ public class IslandDetailActivity extends AppCompatActivity {
         totalCount = (TextView) findViewById(R.id.totalNo);
         todayCount= (TextView) findViewById(R.id.todayNewCases);
         totalDeaths= (TextView) findViewById(R.id.totalDeaths) ;
+        yesterdayTotalCount = (TextView) findViewById(R.id.yesterdayCount);
         upTrend= (ImageView) findViewById(R.id.upTrendImage) ;
         noTrend= (ImageView) findViewById(R.id.noTrendImage) ;
 
@@ -70,12 +74,21 @@ public class IslandDetailActivity extends AppCompatActivity {
         country.setText(s);
 
         try {
+             yesterday = Integer.parseInt(c);
              myNum = Integer.parseInt(t);
             noTrend.setVisibility(myNum == 0 ? View.VISIBLE : View.GONE);
             upTrend.setVisibility(myNum > 0 ? View.VISIBLE : View.GONE);
+
+            //to calculate yesterday cases
+            yesterdayTC = yesterday-myNum;
+
+
         }catch(NumberFormatException e){}
 
 
+        // putting in the textview
+        String yesterdayString = Integer.toString(yesterdayTC);
+        yesterdayTotalCount.setText(yesterdayString);
 
     }
 
