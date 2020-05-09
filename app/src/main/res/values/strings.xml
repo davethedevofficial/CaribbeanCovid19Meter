@@ -20,4 +20,10 @@ Caribbean.</string>
     <string name="total_cases_label">Total Cases</string>
     <string name="increase_default">Increase</string>
     <string name="no_rise_default">No rise</string>
+    <string name="yesterday_default">Yesterday</string>
+    <string name="remind_me">Remind Me</string>
+    <string name="date_to_be_announced">COVID-19 Update (To be announced)</string>
+    <string name="the_minister_address_time">The minister for health will address the nation at (to be annouced)</string>
+    <string name="covid_picture">Covid picture</string>
+    <string name="upcoming_text">Upcoming</string>
 </resources>

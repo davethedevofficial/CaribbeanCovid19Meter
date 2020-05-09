@@ -71,6 +71,8 @@ public class IslandListAdapter extends RecyclerView.Adapter<IslandListAdapter.Is
                     i.putExtra("Controller",island.totalCases + "");
                     i.putExtra( "Today", island.todayCases+"");
                     i.putExtra( "Deaths", island.totalDeaths+"");
+                    i.putExtra( "YesterdayD", island.yesterdayCases+"");
+                    i.putExtra("todayDeaths",island.todayDeaths+"");
                     context.startActivity(i);
                 }
             });

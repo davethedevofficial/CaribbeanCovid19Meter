@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IslandDetailActivity extends AppCompatActivity {
 
@@ -22,12 +23,14 @@ public class IslandDetailActivity extends AppCompatActivity {
     private TextView totalDeaths;
     private TextView yesterdayTotalCount;
     private TextView yesterdayDeaths;
+    private TextView yesterdayCases;
 
     private ImageView upTrend;
     private ImageView noTrend;
 
     private String sharedPrefFile = "io.rbr.caribbeancovid_19.prefs";
     private SharedPreferences mPreferences;
+    private String message = "There are no dates scheduled as yet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class IslandDetailActivity extends AppCompatActivity {
           int todayDeaths = 0;
           int yesterdayDC = 0;
           int yesterdayD = 0;
+
         //Get Reference to Views
         nameLabel = (TextView) findViewById(R.id.nameLabel);
         profileImageView = (ImageView) findViewById(R.id.profileImageView);
@@ -48,10 +52,12 @@ public class IslandDetailActivity extends AppCompatActivity {
         totalCount = (TextView) findViewById(R.id.totalNo);
         todayCount= (TextView) findViewById(R.id.todayNewCases);
         totalDeaths= (TextView) findViewById(R.id.totalDeaths) ;
+        yesterdayCases = (TextView) findViewById(R.id.yestCasesLabel);
         yesterdayTotalCount = (TextView) findViewById(R.id.yesterdayCount);
         yesterdayDeaths = (TextView)findViewById(R.id.yesterdayDeathLabel);
         upTrend= (ImageView) findViewById(R.id.upTrendImage) ;
         noTrend= (ImageView) findViewById(R.id.noTrendImage) ;
+
 
         // Set name on the ui
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
@@ -72,15 +78,22 @@ public class IslandDetailActivity extends AppCompatActivity {
         String c = getIntent().getExtras().getString("Controller");
         String t = getIntent().getExtras().getString("Today");
         String d = getIntent().getExtras().getString("Deaths");
+        String e = getIntent().getExtras().getString("YesterdayD");
+        String deathsToday = getIntent().getExtras().getString("todayDeaths");
 
         todayCount.setText("+" + t + " Cases");
         totalDeaths.setText(d + " Total Deaths");
+        yesterdayCases.setText("+" + e + " Cases");
         totalCount.setText(c);
         country.setText(s);
+
 
         try {
              yesterday = Integer.parseInt(c);
              myNum = Integer.parseInt(t);
+            todayDeaths = Integer.parseInt(deathsToday);
+            yesterdayD = Integer.parseInt(d);
+
 
             noTrend.setVisibility(myNum == 0 ? View.VISIBLE : View.GONE);
             upTrend.setVisibility(myNum > 0 ? View.VISIBLE : View.GONE);
@@ -88,17 +101,21 @@ public class IslandDetailActivity extends AppCompatActivity {
             //to calculate yesterday cases
             yesterdayTC = yesterday-myNum;
 
+            //to calulate yesterday deaths
+            yesterdayDC = yesterdayD-todayDeaths;
 
-        }catch(NumberFormatException e){}
+        }catch(NumberFormatException nfe){}
 
 
         // putting in the textview
         String yesterdayString = Integer.toString(yesterdayTC);
         yesterdayTotalCount.setText(yesterdayString);
-
+        String yesterdayDoom = Integer.toString(yesterdayDC);
+        yesterdayDeaths.setText( yesterdayDoom+ " Total Deaths");
     }
 
     public void pickImage(View view) {
+
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, PICK_IMAGE);
@@ -118,5 +135,8 @@ public class IslandDetailActivity extends AppCompatActivity {
     }
 
 
-
+    public void Reminder(View view) {
+        Toast.makeText(getApplicationContext(), message,
+                Toast.LENGTH_SHORT).show();
+    }
 }
