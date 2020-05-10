@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".IslandDetailActivity">
@@ -13,7 +17,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/colorSubtitle"
+        android:textColor="@color/colorTitle"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,8 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="@string/today_default"
                 android:textColor="@color/colorSubtitle"
                 android:textSize="18sp"
@@ -110,13 +114,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
                 android:id="@+id/totalNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="67dp"
                 android:textSize="40sp"
@@ -128,53 +131,54 @@
 
             <TextView
                 android:id="@+id/totalCasesLabel"
-                android:layout_width="34dp"
-                android:layout_height="32dp"
+                android:layout_width="49dp"
+                android:layout_height="35dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:gravity="clip_vertical"
+                android:fontFamily="sans-serif-black"
+                android:gravity="clip_vertical|center_horizontal"
                 android:text="@string/total_cases_label"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/totalNo"
                 app:layout_constraintTop_toBottomOf="@+id/todayLabel" />
 
             <ImageView
-                android:id="@+id/upTrendImage"
-                android:layout_width="29dp"
-                android:layout_height="31dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:contentDescription="@string/increase_default"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/up_trend_white"
-                tools:visibility="invisible" />
-
-            <ImageView
                 android:id="@+id/noTrendImage"
                 android:layout_width="31dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:contentDescription="@string/no_rise_default"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/todayLabel"
                 app:srcCompat="@drawable/no_trend_white"
+                tools:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/upTrendImage"
+                android:layout_width="29dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:contentDescription="@string/increase_default"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/todayLabel"
+                app:srcCompat="@drawable/up_trend_white"
                 tools:visibility="invisible" />
 
             <TextView
                 android:id="@+id/todayNewCases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/colorSubtitle"
                 app:layout_constraintBottom_toTopOf="@+id/totalDeaths"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -182,9 +186,11 @@
                 android:id="@+id/totalDeaths"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/colorSubtitle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -196,15 +202,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="143dp"
         android:layout_height="170dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         app:cardBackgroundColor="#1D1D38"
         app:cardCornerRadius="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/chooseIslandLabel3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -225,11 +228,13 @@
 
             <TextView
                 android:id="@+id/yesterdayCasesLabel"
-                android:layout_width="32dp"
-                android:layout_height="29dp"
+                android:layout_width="48dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
                 android:text="@string/total_cases_label"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -240,10 +245,11 @@
                 android:id="@+id/yesterdayCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="67dp"
+                android:fontFamily="sans-serif-black"
                 android:textSize="37sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -253,9 +259,11 @@
                 android:id="@+id/yesterdayDeathLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginBottom="15dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/colorSubtitle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -263,9 +271,11 @@
                 android:id="@+id/yestCasesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/colorSubtitle"
                 app:layout_constraintBottom_toTopOf="@+id/yesterdayDeathLabel"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -274,11 +284,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="362dp"
+        android:layout_width="0dp"
         android:layout_height="147dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:layout_marginBottom="21dp"
@@ -287,7 +297,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/upcomingLabel">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="362dp"
@@ -313,7 +323,7 @@
                 android:layout_marginBottom="5dp"
                 android:onClick="Reminder"
                 android:text="@string/remind_me"
-                android:textColor="#081DBD"
+                android:textColor="#3E6BFF"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -385,13 +395,14 @@
         android:id="@+id/upcomingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="32dp"
         android:text="@string/upcoming_text"
         android:textColor="@color/colorSubtitle"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
